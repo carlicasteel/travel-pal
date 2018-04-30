@@ -117,7 +117,6 @@ extension ViewController: CollectionViewCellDelegate {
                     self.collectionView.reloadData()
                 }
             }
-        
         }
     }
 }

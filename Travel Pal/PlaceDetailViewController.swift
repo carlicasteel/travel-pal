@@ -35,8 +35,28 @@ class PlaceDetailViewController: UIViewController {
         let region = MKCoordinateRegionMakeWithDistance(place.coordinate, regionDistance, regionDistance)
         mapView.setRegion(region, animated: true)
         updateMap()
+        
+        
+//        textView.text = "Enter travel tips here."
+//        textView.textColor = UIColor.lightGray
+        
+        
     }
-    
+
+//    func textViewDidBeginEditing(_ textView: UITextView) {
+//        if textView.textColor == UIColor.lightGray {
+//            textView.text = nil
+//            textView.textColor = UIColor.black
+//        }
+//    }
+//
+//    func textViewDidEndEditing(_ textView: UITextView) {
+//        if textView.text.isEmpty {
+//            textView.text = "Enter travel tips here."
+//            textView.textColor = UIColor.lightGray
+//        }
+//    }
+
     func updateMap() {
         mapView.removeAnnotations(mapView.annotations)
         mapView.addAnnotation(place)
