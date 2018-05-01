@@ -68,19 +68,6 @@ class AlbumPlacesViewController: UIViewController {
         present(autocompleteController, animated: true, completion: nil)
         
     }
-    
-    //    @IBAction func unwindFromPlaceDetail(segue: UIStoryboardSegue) {
-    //        let source = segue.source as! PlaceDetailViewController
-    //        if let selectedIndexPath = tableView.indexPathForSelectedRow {
-    //            places.placesArray[selectedIndexPath.row] = source.place
-    //            tableView.reloadRows(at: [selectedIndexPath], with: .automatic)
-    //        } else {
-    //            let newIndexPath = IndexPath(row: places.placesArray.count, section: 0)
-    //            places.placesArray.append(source.place)
-    //            tableView.insertRows(at: [newIndexPath], with: .bottom)
-    //            tableView.scrollToRow(at: newIndexPath, at: .bottom, animated: true)
-    //        }
-    //    }
 }
 
 extension AlbumPlacesViewController: GMSAutocompleteViewControllerDelegate {
@@ -134,20 +121,12 @@ extension AlbumPlacesViewController: UITableViewDataSource, UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-//            places.placesArray.remove(at: indexPath.row)
-//            tableView.deleteRows(at: [indexPath], with: .fade)
+            
             places.deleteData(album: self.album, place: places.placesArray[indexPath.row]) { (done) in
-                //                print(indexPath.row)
-                //                print(self.albums.albumArray)
-                //                self.albums.albumArray.remove(at: indexPath.row)
-                //
-                //                //2. delete the photo cell at that index path from the collection view
-                //                self.collectionView?.deleteItems(at: [indexPath])
                 self.places.loadData(album: self.album) {
                     self.tableView.reloadData()
                 }
             }
         }
     }
-    
 }

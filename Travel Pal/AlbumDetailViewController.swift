@@ -18,7 +18,6 @@ class AlbumDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     func leaveViewController() {

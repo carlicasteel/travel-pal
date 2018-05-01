@@ -63,7 +63,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CollectionViewCell
         cell.cellLabel.text = albums.albumArray[indexPath.item].albumTitle
-//        cell.cellImageView.image = albums.albumArray[indexPath.item].albumImage
         cell.cellImageView.image = #imageLiteral(resourceName: "earth")
         cell.layer.borderColor = UIColor.lightGray.cgColor
         cell.layer.borderWidth = 0.5
@@ -105,14 +104,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 extension ViewController: CollectionViewCellDelegate {
     func  delete(cell: CollectionViewCell) {
         if let indexPath = collectionView?.indexPath(for: cell) {
-        // 1. delete the photo from our data source
             albums.deleteData(album: albums.albumArray[indexPath.row]) { (done) in
-//                print(indexPath.row)
-//                print(self.albums.albumArray)
-//                self.albums.albumArray.remove(at: indexPath.row)
-//
-//                //2. delete the photo cell at that index path from the collection view
-//                self.collectionView?.deleteItems(at: [indexPath])
                 self.albums.loadData {
                     self.collectionView.reloadData()
                 }
